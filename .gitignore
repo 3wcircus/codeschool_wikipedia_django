@@ -90,3 +90,4 @@ local_settings.py
 .env
 db.sqlite3d_wiki_proj/media/
 .idea/
+d_wiki_proj/db.sqlite3

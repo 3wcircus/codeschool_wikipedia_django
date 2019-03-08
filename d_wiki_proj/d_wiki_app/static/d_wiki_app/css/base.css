@@ -37,7 +37,7 @@ body {
     grid-template-columns: 200px 1fr;
     grid-template-areas:
             "header  header  header"
-            "sidebar content content"
+            "content content sidebar"
             "footer  footer  footer";
     background-color: #fff;
     color: #444;

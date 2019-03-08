@@ -5,9 +5,19 @@
 <table>
     {% for entry in wiki_entries %}
     <tr>
-        <td><a href="{% url 'read_wiki_entry' entry.id %}">{{entry.wiki_post_subject}}</a> </td>
+        <td colspan="2"><a href="{% url 'read_wiki_entry' entry.id %}">{{entry.wiki_post_subject}}</a></td>
+    </tr>
+    <tr>
+
+        {% if entry.wiki_post_image %}
         <td>{{ entry.wiki_post_text }}</td>
-        <td><img src="{{ entry.wiki_post_image.url }}" width="200"/></td>
+        <td>
+            <img src="{{ entry.wiki_post_image.url }}" width="200"/>
+        </td>
+        {% else %}
+        <td colspan="2">{{ entry.wiki_post_text }}</td>
+        {% endif %}
+
     </tr>
     {% endfor %}
 
