@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'd_wiki_app/css/base.css' %}"/>
+</head>
+<body>
+<!--<div class="container">-->
+<div class="wrapper">
+    <div class="box header">
+        <!--<div class="jumbotron">-->
+            <!--<header class="box">-->
+            <h1>
+                {% block header %}
+                Welcome to the Django Wiki
+                {% endblock header %}
+            </h1>
+            <!--</header>-->
+
+            {% if user.is_authenticated %}
+            Logged in as {{ user.username | title}}
+            <p><a href="{% url 'logout' %}">Log Out</a></p>
+            {% else %}
+            You are not Logged In
+            <p><a href="{% url 'login' %}">Log In</a></p>
+            {% endif %}
+
+        <!--</div>-->
+    </div>
+    <div class="box sidebar"><p>Sidebar</p>
+    <ul>
+        <li>A line Item</li>
+        <li>A line Item</li>
+        <li>A line Item</li>
+        <li>A line Item</li>
+        <li>A line Item</li>
+        <li>A line Item</li>
+        <li>A line Item</li>
+    </ul>
+    </div>
+    <div class="box content">
+        {% block content %}
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est laudantium provident quae quam ratione
+            voluptatibus! Aut inventore molestiae quod. Accusamus cum cupiditate ex id inventore iste, officiis quis
+            repellendus totam?
+        </div>
+        <div>Eum, facilis, recusandae? Dignissimos id molestiae quaerat qui quod. Adipisci, fuga ipsam minus molestiae
+            mollitia quo similique vero? Aperiam, incidunt laborum maxime nulla obcaecati officia quidem repudiandae
+            saepe sunt. Ratione.
+        </div>
+        <div>Ab adipisci amet corporis dignissimos eos explicabo incidunt, ipsam ipsum laboriosam, magnam magni nihil
+            nobis obcaecati odio perspiciatis quasi qui rem repellat reprehenderit repudiandae veniam, voluptatem
+            voluptates voluptatum. Dolore, perspiciatis?
+        </div>
+        <div>Consectetur, cumque dolor ducimus eum hic illum magnam minus non quae similique sit, sunt, voluptatem
+            voluptatum? Autem deleniti, ea eaque exercitationem id incidunt nisi, pariatur quia quisquam rem sequi vero?
+        </div>
+        <div>Ad aspernatur at aut blanditiis debitis deserunt doloremque eius est eum facilis hic incidunt libero minima
+            modi molestiae natus nesciunt officia pariatur possimus, provident quas rem repudiandae sint tempora ullam.
+        </div>
+
+        {% endblock content %}
+    </div>
+    <div class="box footer">This application developed by Kevin Yancy</div>
+
+    <!--</div>-->
+    <!--<div class="container">-->
+
+    <!--<aside>-->
+    <!--Here is aside-->
+    <!--</aside>-->
+    <!--<section>-->
+
+    <!--</section>-->
+    <!--<footer>-->
+    <!--here is footer-->
+    <!--</footer>-->
+    <!--</div>-->
+</body>
+</html>

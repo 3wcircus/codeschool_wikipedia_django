@@ -1,0 +1,16 @@
+{% extends 'd_wiki_app/base.html' %}
+
+{% block content %}
+
+<table>
+    {% for entry in wiki_entries %}
+    <tr>
+        <td><a href="{% url 'read_wiki_entry' entry.id %}">{{entry.wiki_post_subject}}</a> </td>
+        <td>{{ entry.wiki_post_text }}</td>
+        <td><img src="{{ entry.wiki_post_image.url }}" width="200"/></td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock content %}
