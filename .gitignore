@@ -1,4 +1,6 @@
-# Created by https://www.gitignore.io
+./idea
+./d_wiki_proj/media
+
 
 ### OSX ###
 .DS_Store
