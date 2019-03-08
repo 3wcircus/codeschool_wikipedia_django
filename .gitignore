@@ -91,3 +91,4 @@ local_settings.py
 db.sqlite3d_wiki_proj/media/
 .idea/
 d_wiki_proj/db.sqlite3
+d_wiki_proj/media/
