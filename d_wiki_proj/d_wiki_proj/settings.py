@@ -145,6 +145,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Redirects for authentication
-LOGIN_REDIRECT_URL = 'mywikientries'
+LOGIN_REDIRECT_URL = 'allwikientries'
 
 LOGOUT_REDIRECT_URL = 'allwikientries'

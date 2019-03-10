@@ -2,16 +2,16 @@
 
 {% block content %}
 
-<table>
+<table width="100%">
     {% for entry in wiki_entries %}
     <tr>
-        <td colspan="2"><a href="{% url 'read_wiki_entry' entry.id %}">{{entry.wiki_post_subject}}</a></td>
+        <td class="wiki_entry_title' colspan="2"><a href="{% url 'read_wiki_entry' entry.id %}">{{entry.wiki_post_subject}}</a></td>
     </tr>
     <tr>
 
         {% if entry.wiki_post_image %}
         <td>{{ entry.wiki_post_text }}</td>
-        <td>
+        <td align="right">
             <img src="{{ entry.wiki_post_image.url }}" width="200"/>
         </td>
         {% else %}

@@ -9,6 +9,12 @@ header {
 }
 
 /*Extra Grid Styling*/
+img {
+    /*padding:1px;*/
+    border:1px solid #021a40;
+    background-color:#ff0;
+}
+
 body {
     margin: 40px;
 }
@@ -16,6 +22,7 @@ body {
 .sidebar {
     grid-area: sidebar;
     background-color: antiquewhite;
+    padding: 10px;
 }
 
 .content {
@@ -34,13 +41,32 @@ body {
 .wrapper {
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 1fr 1fr 200px;
     grid-template-areas:
             "header  header  header"
             "content content sidebar"
             "footer  footer  footer";
     background-color: #fff;
     color: #444;
+}
+
+.wikipost_main {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 300px;
+    grid-template-areas:
+            "wiki_post_title wiki_post_img"
+            "wiki_post_text wiki_post_img";
+}
+
+.wikipost_item {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 200px;
+    grid-template-areas:
+            "wiki_post_item_title"
+            "wiki_post_item_img"
+            "wiki_post_item_text";
 }
 
 
@@ -50,10 +76,15 @@ body {
     border-radius: 5px;
     padding: 10px;
     font-size: 150%;
+
 }
 
 .header,
 .footer {
     background-color: burlywood;
+    font-size: 150%;
 }
 
+td.wiki_entry_title {
+    font-size: 150%;
+}

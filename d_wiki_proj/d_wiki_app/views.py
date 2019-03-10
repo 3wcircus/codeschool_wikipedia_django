@@ -35,14 +35,14 @@ def create_wiki_entry(request):
     new_post_form = WikiPostForm(request.POST or None, request.FILES or None)
     if new_post_form.is_valid():
         new_post_form.save()
-        return redirect('index')
+        return redirect('allwikientries')
     return render(request, 'd_wiki_app/wiki_entry.html', {'wiki_form': new_post_form})
 
 
 # Display a an entry
 def read_wiki_entry(request, entry_id):
     logger.debug('read_wiki_entry')
-    return render(request, 'd_wiki_app/base.html')
+    return render(request, 'd_wiki_app/wiki_entries.html')
 
 
 # Edit an entry
@@ -51,11 +51,11 @@ def update_wiki_entry(request, entry_id):
     new_post_form = WikiPostForm(request.POST or None, request.FILES or None, instance=entry)
     if new_post_form.is_valid():
         new_post_form.save()
-        return redirect('index')
+        return redirect('allwikientries')
     return render(request, 'd_wiki_app/wiki_entry.html', {'wiki_form': new_post_form})
 
 
 # Delete an entry
 def delete_wiki_entry(request, entry_id):
     logger.debug('delete_wiki_entry')
-    return render(request, 'd_wiki_app/base.html')
+    return render(request, 'd_wiki_app/wiki_entries.html')

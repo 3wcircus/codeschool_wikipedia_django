@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>
+        {% block title %} Home {% endblock title %}
+    </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
@@ -15,73 +17,77 @@
 <!--<div class="container">-->
 <div class="wrapper">
     <div class="box header">
-        <!--<div class="jumbotron">-->
-            <!--<header class="box">-->
-            <h1>
-                {% block header %}
-                Welcome to the Django Wiki
-                {% endblock header %}
-            </h1>
-            <!--</header>-->
+        <h1>
+            {% block header %}
+            Welcome to the Django Wiki
+            {% endblock header %}
+        </h1>
 
-            {% if user.is_authenticated %}
-            Logged in as {{ user.username | title}}
-            <p><a href="{% url 'logout' %}">Log Out</a></p>
-            {% else %}
-            You are not Logged In
-            <p><a href="{% url 'login' %}">Log In</a></p>
-            {% endif %}
+        <!--Display message on current User log in status-->
+        {% if user.is_authenticated %}
+        Logged in as {{ user.username | title}}
+        <p><a href="{% url 'logout' %}">Log Out</a></p>
+        {% else %}
+        You are not Logged In
+        <p><a href="{% url 'login' %}">Log In</a></p>
+        {% endif %}
 
-        <!--</div>-->
+        <!--Define main Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <!--<a class="navbar-brand" href="#">Django Blog</a>-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">New Wiki Entry</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" disabled href="#">Your Wiki Entries</a>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="form-group pull_right">
+                <input type="text" class="navbar-right form-control" placeholder="Search Term(s)">
+            </div>
+            <button type="submit" class="btn btn-default">Search</button>
+        </nav>
     </div>
-    <div class="box sidebar"><p>Sidebar</p>
-    <ul>
-        <li>A line Item</li>
-        <li>A line Item</li>
-        <li>A line Item</li>
-        <li>A line Item</li>
-        <li>A line Item</li>
-        <li>A line Item</li>
-        <li>A line Item</li>
-    </ul>
+    <!--Related Information Sidebar-->
+    <div class="sidebar"><p>Related Information:</p>
+        {% block sidebar %}
+        <table>
+            <tr>
+                <td>UofM Game Camp</td>
+            </tr>
+            <tr>
+                <td><img src="../../../media/images/2019/03/10/gamecamplogo.png" width="100"/></td>
+            </tr>
+            <tr>
+                <td>More information about the UofM game camp can be found <a
+                        href="https://www.memphis.edu/cs/news_and_events/news/2017_creative_game_design_camp.php"
+                        target="_blank">HERE</a></td>
+            </tr>
+        </table>
+        {% endblock sidebar %}
     </div>
+    <!--Main Content for Wiki Article(s)-->
     <div class="box content">
         {% block content %}
-        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est laudantium provident quae quam ratione
-            voluptatibus! Aut inventore molestiae quod. Accusamus cum cupiditate ex id inventore iste, officiis quis
-            repellendus totam?
-        </div>
-        <div>Eum, facilis, recusandae? Dignissimos id molestiae quaerat qui quod. Adipisci, fuga ipsam minus molestiae
-            mollitia quo similique vero? Aperiam, incidunt laborum maxime nulla obcaecati officia quidem repudiandae
-            saepe sunt. Ratione.
-        </div>
-        <div>Ab adipisci amet corporis dignissimos eos explicabo incidunt, ipsam ipsum laboriosam, magnam magni nihil
-            nobis obcaecati odio perspiciatis quasi qui rem repellat reprehenderit repudiandae veniam, voluptatem
-            voluptates voluptatum. Dolore, perspiciatis?
-        </div>
-        <div>Consectetur, cumque dolor ducimus eum hic illum magnam minus non quae similique sit, sunt, voluptatem
-            voluptatum? Autem deleniti, ea eaque exercitationem id incidunt nisi, pariatur quia quisquam rem sequi vero?
-        </div>
-        <div>Ad aspernatur at aut blanditiis debitis deserunt doloremque eius est eum facilis hic incidunt libero minima
-            modi molestiae natus nesciunt officia pariatur possimus, provident quas rem repudiandae sint tempora ullam.
-        </div>
 
         {% endblock content %}
     </div>
-    <div class="box footer">This application developed by Kevin Yancy</div>
-
-    <!--</div>-->
-    <!--<div class="container">-->
-
-    <!--<aside>-->
-    <!--Here is aside-->
-    <!--</aside>-->
-    <!--<section>-->
-
-    <!--</section>-->
-    <!--<footer>-->
-    <!--here is footer-->
-    <!--</footer>-->
-    <!--</div>-->
+    <!--Footer area for creator/copyright info-->
+    <div class="box footer">
+        {% block footer %}
+        This application developed by Kevin Yancy
+        {% endblock footer %}
+    </div>
 </body>
 </html>
