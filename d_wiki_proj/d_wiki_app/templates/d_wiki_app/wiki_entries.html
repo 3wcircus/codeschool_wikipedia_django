@@ -2,25 +2,27 @@
 
 {% block content %}
 
-<table width="100%">
-    {% for entry in wiki_entries %}
-    <tr>
-        <td class="wiki_entry_title' colspan="2"><a href="{% url 'read_wiki_entry' entry.id %}">{{entry.wiki_post_subject}}</a></td>
-    </tr>
-    <tr>
+{% for entry in wiki_entries %}
+<div class="wikipost_main">
+    <div class="wiki_post_title">
+        <a href="{% url 'read_wiki_entry' entry.id %}">{{entry.wiki_post_subject}}</a>
+    </div>
 
+
+    <div class="wiki_post_img">
         {% if entry.wiki_post_image %}
-        <td>{{ entry.wiki_post_text }}</td>
-        <td align="right">
-            <img src="{{ entry.wiki_post_image.url }}" width="200"/>
-        </td>
-        {% else %}
-        <td colspan="2">{{ entry.wiki_post_text }}</td>
+
+        <img src="{{ entry.wiki_post_image.url }}" width="200"/>
         {% endif %}
+    </div>
+    <div class="wiki_post_text">
+        {{ entry.wiki_post_text }}
+    </div>
+</div>
+<div class="wikipost_item">
 
-    </tr>
-    {% endfor %}
+</div>
+{% endfor %}
 
-</table>
 
 {% endblock content %}
