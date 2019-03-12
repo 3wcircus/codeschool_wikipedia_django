@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from datetime import date
 
 # Main model for a Wiki Post
 class WikiPost(models.Model):

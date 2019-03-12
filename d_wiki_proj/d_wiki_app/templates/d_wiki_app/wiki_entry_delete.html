@@ -1,10 +1,11 @@
 {% extends 'd_wiki_app/base.html' %}
 
 {% block title %}
-    {{entry.wiki_post_subject}}
+Delete Wiki Post: {{entry.wiki_post_subject}}
 {% endblock title %}
 
 {% block content %}
+
 <div class="wikipost_main">
     <div class="wiki_post_title">
         {{entry.wiki_post_subject}}
@@ -21,7 +22,10 @@
 </div>
 <div class="edit_controls">
     {% if user == entry.wiki_post_user %}
-    <a href="{% url 'update_wiki_entry' entry.pk %}">Edit Entry</a>
+    <form method="POST" action='{% url "delete_wiki_entry" entry.pk %}'>
+        <input type="submit" value="Delete?"/>
+        {% csrf_token %}
+    </form>
     <a href="{% url 'delete_wiki_entry' entry.pk %}">Delete Entry</a>
     {% endif %}
 </div>

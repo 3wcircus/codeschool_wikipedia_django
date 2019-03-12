@@ -1,0 +1,14 @@
+{% extends 'd_wiki_app/base.html' %}
+
+{% block title %}
+Edit Wiki Post: {{entry.wiki_post_subject}}
+{% endblock title %}
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+    {{ wiki_form.as_p}}
+    {% csrf_token %}
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock content %}
