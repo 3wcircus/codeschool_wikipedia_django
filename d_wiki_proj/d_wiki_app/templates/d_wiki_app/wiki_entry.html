@@ -1,29 +1,53 @@
 {% extends 'd_wiki_app/base.html' %}
 
 {% block title %}
-    {{entry.wiki_post_subject}}
+{{entry.wiki_post_subject}}
 {% endblock title %}
 
 {% block content %}
-<div class="wikipost_main">
-    <div class="wiki_post_title">
-        {{entry.wiki_post_subject}}
-    </div>
+<table>
+    <div class="wikipost_main">
+        <tr>
+            <td>
+                <div class="wiki_post_title">
+                    {{entry.wiki_post_subject}}
+                </div>
+            </td>
+            <td rowspan="2">
+                <div class="wiki_post_img">
+                    {% if entry.wiki_post_image %}
+                    <img src="{{ entry.wiki_post_image.url }}" width="200"/>
+                    {% endif %}
+                </div>
 
-    <div class="wiki_post_img">
-        {% if entry.wiki_post_image %}
-        <img src="{{ entry.wiki_post_image.url }}" width="200"/>
-        {% endif %}
-    </div>
-    <div class="wiki_post_text">
-        {{ entry.wiki_post_text }}
-    </div>
-</div>
-<div class="edit_controls">
-    {% if user == entry.wiki_post_user %}
-    <a href="{% url 'update_wiki_entry' entry.pk %}">Edit Entry</a>
-    <a href="{% url 'delete_wiki_entry' entry.pk %}">Delete Entry</a>
-    {% endif %}
-</div>
+            </td>
+            <td rowspan="2" width="200px">
+                <div class="sidebar">
+                    <ul>
+                        <li>Item</li>
+                        <li>Item</li>
+                        <li>Item</li>
+                    </ul>
+                </div>
 
+            </td>
+        <tr>
+            <td>
+                <div class="wiki_post_text">
+                    {{ entry.wiki_post_text }}
+                </div>
+            </td>
+    </div>
+    <tr>
+        <td>
+            <div class="edit_controls">
+                {% if user == entry.wiki_post_user %}
+                <hr/>
+                <a class="btn btn-primary" href="{% url 'update_wiki_entry' entry.pk %}">Edit Entry</a>
+                <a class="btn btn-danger" href="{% url 'delete_wiki_entry' entry.pk %}">Delete Entry</a>
+                {% endif %}
+            </div>
+        </td>
+    </tr>
+</table>
 {% endblock content %}

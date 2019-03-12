@@ -1,4 +1,4 @@
-#!D:\dev\code_school\codeschool_wikipedia_django\venv\Scripts\python.exe
+#!D:\Code_School\codeschool_wikipedia_django\venv\Scripts\python.exe
 # EASY-INSTALL-ENTRY-SCRIPT: 'pip==10.0.1','console_scripts','pip'
 __requires__ = 'pip==10.0.1'
 import re

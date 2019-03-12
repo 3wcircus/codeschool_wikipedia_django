@@ -1,5 +1,9 @@
 {% extends 'd_wiki_app/base.html' %}
-
+{% block title %}
+Edit Related Information: {{entry.wiki_post_subject}}
+{% endblock title %}
 {% block content %}
-
+{% for related_info in wiki_related_info %}
+<p><a href="{% url 'related_info_list' related_info.pk %}">{{related_info.wiki_post_lineitem_title}}</a></p>
+{% endfor %}
 {% endblock content %}

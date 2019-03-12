@@ -8,7 +8,38 @@ Edit Wiki Post: {{entry.wiki_post_subject}}
 <form method="POST" enctype="multipart/form-data">
     {{ wiki_form.as_p}}
     {% csrf_token %}
-    <input type="submit" value="Submit">
+    <input class="btn btn-primary" type="submit" value="Update Main Entry">
 </form>
+<hr/>
+<div>
+    <table border="1">
+    {% for other in related %}
 
+        <tr>
+            <td><strong>
+    {{other.wiki_post_lineitem_title}}
+            </strong>
+            </td>
+            <td colspan="2" align="right">
+                <button type="button" class="btn btn-primary btn-sm">Edit Related Item</button>
+                <button type="button" class="btn btn-danger btn-sm">Delete Related Item</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{other.wiki_post_lineitem_text}}
+            </td>
+            <td align="right">
+                {% if other.wiki_post_lineitem_image %}
+                <img src="{{ other.wiki_post_lineitem_image.url }}" width="200"/>
+                {% endif %}
+            </td>
+
+        </tr>
+
+    {% endfor %}
+    </table>
+    <br/>
+    <button type="button" class="btn btn-success">Add a Related Item</button>
+</div>
 {% endblock content %}

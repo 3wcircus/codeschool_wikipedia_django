@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="D:\dev\code_school\codeschool_wikipedia_django\venv"
+$env:VIRTUAL_ENV="D:\Code_School\codeschool_wikipedia_django\venv"
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name
